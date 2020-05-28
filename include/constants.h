@@ -10,7 +10,7 @@ namespace constants
     namespace res
     {
         const std::string resourcesRoot = "res";
-        const std::vector<std::string> textureFilenames = { "background.jpg", "testingNode.png" };
+        const std::vector<std::string> textureFilenames = { "testingNode.png" };
         const std::vector<std::string> fontFilenames = { "testingNodeCaptionFont.ttf", "basic.ttf" };
     }
 

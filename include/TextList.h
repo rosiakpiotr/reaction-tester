@@ -11,7 +11,7 @@ class TextList : public sf::Drawable
 public:
     TextList(const sf::Font& font, unsigned int characterSize = 30);
 
-    void addRow(const std::string& text);
+    void addRow(const std::string& text, sf::Color rowColor);
 
     void addRows(std::vector<std::string> texts);
 

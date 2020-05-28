@@ -66,7 +66,7 @@ void ReactionTestingScreen::createTimingLists()
 void ReactionTestingScreen::createCasesLeftText()
 {
     casesLeft.setFont(*resources->getFontRawPtr("basic"));
-    casesLeft.setFillColor(sf::Color::Black);
+    casesLeft.setFillColor(sf::Color::White);
     casesLeft.setPosition(5, 5);
 
 	updateCasesLeft(testConfig.testCasesCount);
@@ -96,14 +96,24 @@ void ReactionTestingScreen::attachAnimations()
 
 void ReactionTestingScreen::createBackground()
 {
-    background.setTexture(*resources->getTextureRawPtr("background"));
+	background = sf::VertexArray(sf::PrimitiveType::Quads, 4);
+
+	background[0].position = sf::Vector2f(0, 0);
+	background[1].position = sf::Vector2f(constants::window::width, 0);
+	background[2].position = sf::Vector2f(constants::window::width, constants::window::height);
+	background[3].position = sf::Vector2f(0, constants::window::height);
+
+	background[0].color = sf::Color(30, 30, 30);
+	background[1].color = sf::Color(15, 15, 15);
+	background[2].color = sf::Color(30, 30, 30);
+	background[3].color = sf::Color(15, 15, 15);
 }
 
 void ReactionTestingScreen::createNodes()
 {
     int differenceDistance = constants::window::width / testConfig.nodeCount;
     int firstNodeXPos = differenceDistance / 2.f;
-    int nodesYPos = constants::window::height * 0.3;
+    int nodesYPos = constants::window::height * 0.25;
 
     int index = 0;
     for(const std::string& letter: testConfig.captions)
@@ -165,19 +175,18 @@ void ReactionTestingScreen::handleEvent(const sf::Event& windowEvent)
 
         // In this context tester.getRandomNodeIndex returns index of just selected node.
         int whichList = tester.getRandomNodeIndex();
-        addTimingToList(whichList);
+        addTimingToList(whichList, isCorrect);
 
         // aka celebrations
         holdUpWithNextTextFor(sf::milliseconds(1000));
     }
 }
 
-void ReactionTestingScreen::addTimingToList(int index)
+void ReactionTestingScreen::addTimingToList(int index, bool greenOrRed)
 {
     TextList& timingList = timingLists.at(index);
     std::string timingText = tester.timingToFormattedText();
-
-    timingList.addRow(timingText);
+    timingList.addRow(timingText, greenOrRed ? sf::Color::Green : sf::Color::Red);
 }
 
 void ReactionTestingScreen::tick()

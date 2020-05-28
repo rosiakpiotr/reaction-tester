@@ -17,18 +17,18 @@ void TextList::addRows(std::vector<std::string> rowsContents)
 {
     for (const std::string& rowContent: rowsContents)
     {
-        addRow(rowContent);
+        addRow(rowContent, sf::Color::Black);
     }
 }
 
-void TextList::addRow(const std::string& content)
+void TextList::addRow(const std::string& content, sf::Color color)
 {
     sf::Text newText;
 
     newText.setFont(font);
     newText.setString(content);
     newText.setCharacterSize(characterSize);
-    newText.setFillColor(sf::Color::Black);
+    newText.setFillColor(color);
 
     textRows.push_back(newText);
 

@@ -33,7 +33,7 @@ bool ReactionTest::isTestCaseReady()
 void ReactionTest::startNewCase()
 {
     currentNodeIndex = randomNumberInRange(0, nodeCount);
-    markNodeAfter = sf::milliseconds(randomNumberInRange(200, 1000));
+    markNodeAfter = sf::milliseconds(randomNumberInRange(200, 2000));
     markingNodeDelayTimer.restart();
     testStarted = true;
 }
@@ -58,7 +58,7 @@ sf::Time ReactionTest::answerTime()
 
 bool ReactionTest::answer(int index)
 {
-    bool isCorrect = (index == currentNodeIndex) && (answerTime() > sf::milliseconds(0));
+    bool isCorrect = (index == currentNodeIndex) && (answerTime() > sf::Time::Zero);
     lastAnswerCorrect = isCorrect;
     casesLeft -= 1;
     testStarted = testCaseReady = false;
@@ -81,7 +81,7 @@ std::string ReactionTest::timingToFormattedText()
     }
     else
     {
-        text = (lastAnswerCorrect ? "OK - " : "BAD - ") + std::to_string(timingMs) + " ms";
+        text = std::to_string(timingMs) + " ms";
     }
 
     return text;

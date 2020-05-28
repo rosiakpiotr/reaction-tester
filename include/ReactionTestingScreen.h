@@ -49,7 +49,7 @@ private:
 
     void holdUpWithNextTextFor(sf::Time howLong);
     bool celebrationsFinished();
-    void addTimingToList(int listIndex);
+    void addTimingToList(int listIndex, bool greenOrRed);
 
     TestingNode* selectNodeAt(int index);
 
@@ -59,7 +59,7 @@ private:
     void parseIntParams(const std::vector<int>& argIntParams);
     void parseStringParams(const std::vector<std::string>& argStringParams);
 
-    sf::Sprite background;
+    sf::VertexArray background;
     sf::Text casesLeft;
     std::vector<TestingNode> nodes;
     std::vector<TextList> timingLists;
