@@ -16,7 +16,7 @@ void ReactionTestingScreen::prepare(const ScreenParam& arg)
 
     attachAnimations();
 
-    animationManager.setOnAnimationEnd([&](){startNewTestCase();});
+	animationManager.setOnAnimationEnd([&]() {startNewTestCase(); });
     animationManager.start();
 }
 
@@ -68,6 +68,8 @@ void ReactionTestingScreen::createCasesLeftText()
     casesLeft.setFont(*resources->getFontRawPtr("basic"));
     casesLeft.setFillColor(sf::Color::Black);
     casesLeft.setPosition(5, 5);
+
+	updateCasesLeft(testConfig.testCasesCount);
 }
 
 void ReactionTestingScreen::updateCasesLeft(int number)

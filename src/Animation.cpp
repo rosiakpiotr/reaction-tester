@@ -1,5 +1,13 @@
 #include "Animation.h"
 
+Animation::Animation() : targetDuration(sf::Time::Zero)
+{
+}
+
+Animation::Animation(const sf::Time duration) : targetDuration(duration), isAnimationFinished(false)
+{
+}
+
 bool Animation::isCompleted()
 {
     return elapsedSinceStart >= targetDuration;;

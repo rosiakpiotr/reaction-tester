@@ -1,12 +1,12 @@
 #ifndef REACTIONTEST_H
 #define REACTIONTEST_H
 
-#include "../utility.h"
+#include "utility.h"
 
 class ReactionTest
 {
 public:
-    ReactionTest() = default;
+	ReactionTest();
 
     ReactionTest(int nodeCount, int testingCasesCount, int difficulty);
 

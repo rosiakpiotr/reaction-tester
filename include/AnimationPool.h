@@ -10,6 +10,8 @@ class AnimationPool: public Animation
 {
 public:
 
+	AnimationPool();
+
     void tick();
 
     void add(Animation::Ptr newAnimation);
@@ -26,6 +28,8 @@ private:
     void onAnimationEnd();
 
     bool areAnyAnimationsLeft();
+
+	bool onAnimEndTriggered;
 
     Animation::Ptr currentAnimation;
     std::deque<Animation::Ptr> animations;

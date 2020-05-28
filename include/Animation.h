@@ -7,8 +7,8 @@
 class Animation
 {
 public:
-    Animation() = default;
-    Animation(const sf::Time duration): targetDuration(duration) {}
+	Animation();
+	Animation(const sf::Time duration);
 
     virtual void tick() = 0;
 

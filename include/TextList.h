@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "../utility.h"
+#include "utility.h"
 
 class TextList : public sf::Drawable
 {

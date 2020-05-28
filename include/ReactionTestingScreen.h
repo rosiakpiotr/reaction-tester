@@ -10,10 +10,10 @@
 
 struct ReactionTestConfig
 {
-    int nodeCount;
-    int testCasesCount;
-    int difficulty;
-    std::vector<std::string> captions;
+	int nodeCount = 0;
+	int testCasesCount = 0;
+	int difficulty = 0;
+	std::vector<std::string> captions = {};
 };
 
 class ReactionTestingScreen : public Screen
@@ -44,7 +44,6 @@ private:
 
     void startNewTestCase();
 
-    void selectAndMarkNodeAt(int index);
     void updateCasesLeft(int number);
     void resetAllNodes();
 

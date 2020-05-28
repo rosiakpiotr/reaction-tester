@@ -7,11 +7,11 @@ int main(int argc, char* argv[])
 {
     disableSfmlConsoleOutput();
 
-    int nodesCount = 1;
+    int nodesCount = 3;
     int casesCount = 5;
     int difficulty = 1;
 
-    std::vector <std::string> captions = {"T"};
+    std::vector <std::string> captions = {"Q", "W", "E"};
 
     Resources res;
     bool loadedCorrectly = res.loadAll();

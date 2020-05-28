@@ -1,9 +1,18 @@
 #include "ReactionTest.h"
 
-ReactionTest::ReactionTest(int nodeCount, int testingCasesCount, int difficulty):
-    nodeCount(nodeCount), testingCasesCount(testingCasesCount), difficulty(difficulty)
+// Sets all defaut values.
+ReactionTest::ReactionTest() : 
+	nodeCount(0), testingCasesCount(0), difficulty(0), currentNodeIndex(0), lastAnswerCorrect(false),
+	testStarted(false), casesLeft(0), testCaseReady(false)
 {
-    casesLeft = testingCasesCount;
+}
+
+ReactionTest::ReactionTest(int nodeCount, int testingCasesCount, int difficulty):
+    nodeCount(nodeCount), testingCasesCount(testingCasesCount), difficulty(difficulty),
+	lastAnswerCorrect(false), testStarted(false), testCaseReady(false), casesLeft(testingCasesCount),
+	currentNodeIndex(0)
+{
+	
 }
 
 int ReactionTest::getRandomNodeIndex()

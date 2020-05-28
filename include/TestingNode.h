@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
-#include "../utility.h"
+#include "utility.h"
 
 enum NodeStatus { NEUTRAL, POSSIBLE, CORRECT, WRONG };
 

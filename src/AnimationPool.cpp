@@ -1,5 +1,10 @@
 #include "AnimationPool.h"
 
+AnimationPool::AnimationPool() : onAnimEndTriggered(false)
+{
+
+}
+
 void AnimationPool::tick()
 {
     if(currentAnimation->isCompleted())
@@ -38,11 +43,12 @@ void AnimationPool::add(Animation::Ptr newAnimation)
 
 bool AnimationPool::isCompleted()
 {
-    bool completed = animations.front()->isCompleted();
-    if (completed)
+	bool completed = areAnyAnimationsLeft() ? animations.front()->isCompleted() : currentAnimation->isCompleted();
+
+    if (completed && !onAnimEndTriggered)
     {
-        if (static bool do_once; !std::exchange(do_once, true))
-            onAnimationEnd();
+		onAnimationEnd();
+		onAnimEndTriggered = true;
     }
     return completed;
 }

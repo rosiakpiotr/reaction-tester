@@ -5,8 +5,8 @@
 #include <memory>
 
 #include "ColorfulLogger.h"
-#include "../constants.h"
-#include "../utility.h"
+#include "constants.h"
+#include "utility.h"
 
 class Resources
 {
