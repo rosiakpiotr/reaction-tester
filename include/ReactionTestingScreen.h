@@ -12,10 +12,10 @@
 
 struct ReactionTestConfig : virtual ScreenParam
 {
-	int nodeCount = 0;
-	int testCasesCount = 0;
-	int difficulty = 0;
-	std::vector<std::string> captions = {};
+	int nodeCount = 1;
+	int testCasesCount = 1;
+	int difficulty = 1;
+	std::vector<std::string> captions = {""};
 
     typedef std::shared_ptr<ReactionTestConfig> Ptr;
 };
