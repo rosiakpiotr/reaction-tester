@@ -18,26 +18,9 @@ void ReactionTestingScreen::prepare(std::shared_ptr<tgui::Gui> guiObject)
     animationManager.start();
 }
 
-void ReactionTestingScreen::parseScreenParam(const ScreenParam& screenConfigs)
+void ReactionTestingScreen::parseScreenParam(const ScreenParam::Ptr screenConfigs)
 {
-    parseIntParams(screenConfigs.intParams);
-    parseStringParams(screenConfigs.stringParams);
-}
-
-void ReactionTestingScreen::parseIntParams(const std::vector<int>& intParams)
-{
-    testConfig.nodeCount = intParams.at(0);
-    testConfig.testCasesCount = intParams.at(1);
-    testConfig.difficulty = intParams.at(2);
-}
-
-void ReactionTestingScreen::parseStringParams(const std::vector<std::string>& stringParams)
-{
-    // First 'testConfig.nodeCount' elements in stringParams are captions for nodes.
-    for (int i = 0; i < testConfig.nodeCount; i++)
-    {
-        testConfig.captions.push_back(stringParams.at(i));
-    }
+    testConfig = *std::dynamic_pointer_cast<ReactionTestConfig>(screenConfigs).get();
 }
 
 void ReactionTestingScreen::prepareReactionTest()

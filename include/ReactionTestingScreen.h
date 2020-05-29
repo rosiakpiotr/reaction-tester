@@ -10,12 +10,14 @@
 #include "ReactionTest.h"
 #include "TextList.h"
 
-struct ReactionTestConfig
+struct ReactionTestConfig : virtual ScreenParam
 {
 	int nodeCount = 0;
 	int testCasesCount = 0;
 	int difficulty = 0;
 	std::vector<std::string> captions = {};
+
+    typedef std::shared_ptr<ReactionTestConfig> Ptr;
 };
 
 class ReactionTestingScreen : public Screen
@@ -36,7 +38,7 @@ public:
 
 protected:
 
-    void parseScreenParam(const ScreenParam& screenConfigs);
+    void parseScreenParam(const ScreenParam::Ptr screenConfigs);
 
 private:
 
@@ -61,9 +63,6 @@ private:
     TestingNode* selectNodeAt(int index);
 
     void setNodeStatusAtIndex(NodeStatus status, int index);
-
-    void parseIntParams(const std::vector<int>& argIntParams);
-    void parseStringParams(const std::vector<std::string>& argStringParams);
 
     sf::VertexArray background;
     sf::Text casesLeft;

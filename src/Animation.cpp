@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation() : targetDuration(sf::Time::Zero)
+Animation::Animation() : targetDuration(sf::Time::Zero), isAnimationFinished(false)
 {
 }
 

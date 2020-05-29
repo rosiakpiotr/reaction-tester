@@ -10,8 +10,12 @@
 // Allows different screens pass differrent kind of informations.
 struct ScreenParam
 {
+    virtual ~ScreenParam() {}
+
     std::vector<int> intParams;
     std::vector<std::string> stringParams;
+
+    typedef std::shared_ptr<ScreenParam> Ptr;
 };
 
 class Screen
@@ -32,7 +36,7 @@ public:
     typedef std::shared_ptr<Screen> Ptr;
 
     template <class T>
-    static Screen::Ptr createScreen(Resources& resources, const ScreenParam& screenParam)
+    static Screen::Ptr createScreen(Resources& resources, const ScreenParam::Ptr screenParam)
     {
         Screen::Ptr screen(new T(resources));
         screen->parseScreenParam(screenParam);
@@ -41,7 +45,7 @@ public:
 
 protected:
 
-    virtual void parseScreenParam(const ScreenParam& screenConfigs) = 0;
+    virtual void parseScreenParam(const ScreenParam::Ptr screenConfigs) = 0;
 
     Resources& resources;
     Screen::Ptr nextScreen;
