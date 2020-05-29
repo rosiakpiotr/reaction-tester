@@ -15,8 +15,9 @@ void Window::create()
 
 void Window::selectScreen(std::shared_ptr<Screen> newScreen)
 {
+    currentScreenGui->removeAllWidgets();
+    newScreen->prepare(currentScreenGui);
     currentScreen = newScreen;
-    newScreen->setUpGui(currentScreenGui);
 }
 
 void Window::setFramerateLimit(unsigned int limit)

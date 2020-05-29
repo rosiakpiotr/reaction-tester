@@ -17,13 +17,11 @@ struct ScreenParam
 class Screen
 {
 public:
-    Screen(Resources* resources): resources(resources) {}
+    Screen(Resources& resources): resources(resources) {}
 
-    virtual void prepare(const ScreenParam& arg) = 0;
+    virtual void prepare(std::shared_ptr<tgui::Gui> guiObject) = 0;
 
     virtual void handleEvent(const sf::Event& windowEvent) = 0;
-
-    virtual void setUpGui(std::shared_ptr<tgui::Gui> guiObject) = 0;
 
     virtual void tick() = 0;
 
@@ -33,20 +31,20 @@ public:
 
     typedef std::shared_ptr<Screen> Ptr;
 
-protected:
-    Resources* resources;
-    Screen::Ptr nextScreen;
-};
-
-namespace ScreenFactory
-{
-    // Factory method for abstract class Screen.
-    template <class T, typename... Args>
-    Screen::Ptr createScreen(Args... args)
+    template <class T>
+    static Screen::Ptr createScreen(Resources& resources, const ScreenParam& screenParam)
     {
-        Screen::Ptr screen(new T(args...));
+        Screen::Ptr screen(new T(resources));
+        screen->parseScreenParam(screenParam);
         return screen;
     }
-}
+
+protected:
+
+    virtual void parseScreenParam(const ScreenParam& screenConfigs) = 0;
+
+    Resources& resources;
+    Screen::Ptr nextScreen;
+};
 
 #endif // SCREEN_H

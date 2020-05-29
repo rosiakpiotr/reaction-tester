@@ -21,9 +21,9 @@ struct ReactionTestConfig
 class ReactionTestingScreen : public Screen
 {
 public:
-    ReactionTestingScreen(Resources* res): Screen(res) {}
+    ReactionTestingScreen(Resources& res): Screen(res) {}
 
-    void prepare(const ScreenParam& arg);
+    void prepare(std::shared_ptr<tgui::Gui> guiObject);
 
     void handleEvent(const sf::Event& windowEvent);
 
@@ -34,8 +34,11 @@ public:
     void enableDrawing();
     void disableDrawing();
 
+protected:
+
+    void parseScreenParam(const ScreenParam& screenConfigs);
+
 private:
-    void setUpGui(std::shared_ptr<tgui::Gui> guiObject);
 
     void createBackground();
     void createNodes();
@@ -59,7 +62,6 @@ private:
 
     void setNodeStatusAtIndex(NodeStatus status, int index);
 
-    void parseArg(const ScreenParam& arg);
     void parseIntParams(const std::vector<int>& argIntParams);
     void parseStringParams(const std::vector<std::string>& argStringParams);
 

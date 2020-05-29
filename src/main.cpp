@@ -26,8 +26,7 @@ int main(int argc, char* argv[])
         param.intParams = { nodesCount, casesCount, difficulty };
         param.stringParams = captions;
 
-        Screen::Ptr firstSreen = ScreenFactory::createScreen<ReactionTestingScreen>(&res);
-        firstSreen->prepare(param);
+        Screen::Ptr firstSreen = Screen::createScreen<ReactionTestingScreen>(res, param);
         window.selectScreen(firstSreen);
         window.run();
     }
