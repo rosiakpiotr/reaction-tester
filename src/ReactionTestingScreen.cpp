@@ -94,6 +94,11 @@ void ReactionTestingScreen::attachAnimations()
     }
 }
 
+void ReactionTestingScreen::setUpGui(std::shared_ptr<tgui::Gui> guiObject)
+{
+    
+}
+
 void ReactionTestingScreen::createBackground()
 {
 	background = sf::VertexArray(sf::PrimitiveType::Quads, 4);
@@ -103,10 +108,10 @@ void ReactionTestingScreen::createBackground()
 	background[2].position = sf::Vector2f(constants::window::width, constants::window::height);
 	background[3].position = sf::Vector2f(0, constants::window::height);
 
-	background[0].color = sf::Color(30, 30, 30);
-	background[1].color = sf::Color(15, 15, 15);
-	background[2].color = sf::Color(30, 30, 30);
-	background[3].color = sf::Color(15, 15, 15);
+	background[0].color = sf::Color(20, 30, 25);
+	background[1].color = sf::Color(15, 25, 15);
+	background[2].color = sf::Color(30, 20, 30);
+	background[3].color = sf::Color(10, 15, 20);
 }
 
 void ReactionTestingScreen::createNodes()

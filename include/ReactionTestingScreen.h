@@ -1,6 +1,8 @@
 #ifndef REACTIONTESTINGSCREEN_H
 #define REACTIONTESTINGSCREEN_H
 
+#include <TGUI/TGUI.hpp>
+
 #include "Screen.h"
 #include "TestingNode.h"
 #include "AnimationPool.h"
@@ -33,6 +35,8 @@ public:
     void disableDrawing();
 
 private:
+    void setUpGui(std::shared_ptr<tgui::Gui> guiObject);
+
     void createBackground();
     void createNodes();
     void createCasesLeftText();

@@ -1,6 +1,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
+#include <TGUI/TGUI.hpp>
 #include <SFML/Graphics.hpp>
 #include <memory>
 
@@ -21,6 +22,8 @@ public:
     virtual void prepare(const ScreenParam& arg) = 0;
 
     virtual void handleEvent(const sf::Event& windowEvent) = 0;
+
+    virtual void setUpGui(std::shared_ptr<tgui::Gui> guiObject) = 0;
 
     virtual void tick() = 0;
 
