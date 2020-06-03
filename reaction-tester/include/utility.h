@@ -49,4 +49,5 @@ sf::Vector2f leftTopCornerOfDrawableWithCenterOrigin(T& drawable)
                 position.y - drawableBounds.height / 2.f);
 }
 
+std::vector<char> randomCharacters(int howMany);
 #endif // UTILITY_H

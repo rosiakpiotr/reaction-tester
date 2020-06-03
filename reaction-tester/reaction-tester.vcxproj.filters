@@ -36,6 +36,9 @@
     <ClInclude Include="include\Screen.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="include\SetupScreen.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
     <ClInclude Include="include\TestingNode.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -75,6 +78,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="src\Screen.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SetupScreen.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="src\TestingNode.cpp">

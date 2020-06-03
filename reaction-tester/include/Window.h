@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <TGUI/TGUI.hpp>
+
 #include "Screen.h"
 #include "Resources.h"
 
@@ -22,8 +24,10 @@ private:
     void changeScreenIfReady();
 
     Resources& resources;
-    std::shared_ptr<sf::RenderWindow> windowInstance;
+
     std::shared_ptr<Screen> currentScreen;
+    std::shared_ptr<tgui::Gui> currentScreenGui;
+    std::shared_ptr<sf::RenderWindow> windowInstance;
 };
 
 #endif // WINDOW_H

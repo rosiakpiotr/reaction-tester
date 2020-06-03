@@ -1,10 +1,8 @@
 #include "ReactionTestingScreen.h"
 #include "ColorfulLogger.h"
 
-void ReactionTestingScreen::prepare(const ScreenParam& arg)
+void ReactionTestingScreen::prepare(std::shared_ptr<tgui::Gui> guiObject)
 {
-    parseArg(arg);
-
     createBackground();
     createNodes();
     createCasesLeftText();
@@ -16,30 +14,13 @@ void ReactionTestingScreen::prepare(const ScreenParam& arg)
 
     attachAnimations();
 
-	animationManager.setOnAnimationEnd([&]() {startNewTestCase(); });
+	animationManager.setOnAnimationEnd([&](){startNewTestCase();});
     animationManager.start();
 }
 
-void ReactionTestingScreen::parseArg(const ScreenParam& arg)
+void ReactionTestingScreen::parseScreenParam(const ScreenParam::Ptr screenConfigs)
 {
-    parseIntParams(arg.intParams);
-    parseStringParams(arg.stringParams);
-}
-
-void ReactionTestingScreen::parseIntParams(const std::vector<int>& intParams)
-{
-    testConfig.nodeCount = intParams.at(0);
-    testConfig.testCasesCount = intParams.at(1);
-    testConfig.difficulty = intParams.at(2);
-}
-
-void ReactionTestingScreen::parseStringParams(const std::vector<std::string>& stringParams)
-{
-    // First 'testConfig.nodeCount' elements in stringParams are captions for nodes.
-    for (int i = 0; i < testConfig.nodeCount; i++)
-    {
-        testConfig.captions.push_back(stringParams.at(i));
-    }
+    testConfig = *std::dynamic_pointer_cast<ReactionTestConfig>(screenConfigs).get();
 }
 
 void ReactionTestingScreen::prepareReactionTest()
@@ -54,7 +35,7 @@ void ReactionTestingScreen::createTimingLists()
 {
     for (TestingNode& node : nodes)
     {
-        TextList newTimingList(*resources->getFontRawPtr("basic"));
+        TextList newTimingList(*resources.getFontRawPtr("basic"));
 
         sf::Vector2f nodePosition = leftTopCornerOfDrawableWithCenterOrigin(node);
         newTimingList.setPosition(sf::Vector2f(nodePosition.x, constants::window::height * 0.5));
@@ -65,7 +46,7 @@ void ReactionTestingScreen::createTimingLists()
 
 void ReactionTestingScreen::createCasesLeftText()
 {
-    casesLeft.setFont(*resources->getFontRawPtr("basic"));
+    casesLeft.setFont(*resources.getFontRawPtr("basic"));
     casesLeft.setFillColor(sf::Color::White);
     casesLeft.setPosition(5, 5);
 
@@ -103,10 +84,10 @@ void ReactionTestingScreen::createBackground()
 	background[2].position = sf::Vector2f(constants::window::width, constants::window::height);
 	background[3].position = sf::Vector2f(0, constants::window::height);
 
-	background[0].color = sf::Color(30, 30, 30);
-	background[1].color = sf::Color(15, 15, 15);
-	background[2].color = sf::Color(30, 30, 30);
-	background[3].color = sf::Color(15, 15, 15);
+	background[0].color = sf::Color(20, 20, 25);
+	background[1].color = sf::Color(15, 20, 15);
+	background[2].color = sf::Color(20, 20, 20);
+	background[3].color = sf::Color(20, 15, 20);
 }
 
 void ReactionTestingScreen::createNodes()
@@ -118,8 +99,8 @@ void ReactionTestingScreen::createNodes()
     int index = 0;
     for(const std::string& letter: testConfig.captions)
     {
-        const sf::Texture* nodeTexture = resources->getTextureRawPtr("testingNode");
-        const sf::Font* captionFont = resources->getFontRawPtr("testingNodeCaptionFont");
+        const sf::Texture* nodeTexture = resources.getTextureRawPtr("testingNode");
+        const sf::Font* captionFont = resources.getFontRawPtr("testingNodeCaptionFont");
 
         TestingNode newNode(nodeTexture, captionFont, letter);
 

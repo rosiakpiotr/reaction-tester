@@ -1,17 +1,11 @@
 #include "Resources.h"
 #include "Window.h"
-#include "ReactionTestingScreen.h"
+#include "SetupScreen.h"
 #include "utility.h"
 
 int main(int argc, char* argv[])
 {
     disableSfmlConsoleOutput();
-
-    int nodesCount = 3;
-    int casesCount = 5;
-    int difficulty = 1;
-
-    std::vector <std::string> captions = {"Q", "W", "E"};
 
     Resources res;
     bool loadedCorrectly = res.loadAll();
@@ -22,13 +16,8 @@ int main(int argc, char* argv[])
         window.create();
         window.setFramerateLimit(constants::window::maxFPS);
 
-        ScreenParam param;
-        param.intParams = { nodesCount, casesCount, difficulty };
-        param.stringParams = captions;
-
-        Screen::Ptr firstSreen = ScreenFactory::createScreen<ReactionTestingScreen>(&res);
-        firstSreen->prepare(param);
-        window.selectScreen(firstSreen);
+        Screen::Ptr setupScreen = Screen::createScreen<SetupScreen>(res, nullptr);
+        window.selectScreen(setupScreen);
         window.run();
     }
     else

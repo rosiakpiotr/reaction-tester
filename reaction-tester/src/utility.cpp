@@ -70,3 +70,15 @@ std::string timingToStringMs(sf::Time timing)
     sf::Int32 milliseconds = timing.asMilliseconds();
     return std::to_string(milliseconds) + "ms";
 }
+
+std::vector<char> randomCharacters(int howMany)
+{
+    std::vector<char> characters;
+
+    for (int i = 0; i < howMany; i++)
+    {
+        characters.push_back(randomNumberInRange(65, 90));
+    }
+
+    return characters;
+}

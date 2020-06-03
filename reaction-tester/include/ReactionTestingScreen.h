@@ -1,6 +1,8 @@
 #ifndef REACTIONTESTINGSCREEN_H
 #define REACTIONTESTINGSCREEN_H
 
+#include <TGUI/TGUI.hpp>
+
 #include "Screen.h"
 #include "TestingNode.h"
 #include "AnimationPool.h"
@@ -8,20 +10,22 @@
 #include "ReactionTest.h"
 #include "TextList.h"
 
-struct ReactionTestConfig
+struct ReactionTestConfig : virtual ScreenParam
 {
-	int nodeCount = 0;
-	int testCasesCount = 0;
-	int difficulty = 0;
-	std::vector<std::string> captions = {};
+	int nodeCount = 1;
+	int testCasesCount = 1;
+	int difficulty = 1;
+	std::vector<std::string> captions = {""};
+
+    typedef std::shared_ptr<ReactionTestConfig> Ptr;
 };
 
 class ReactionTestingScreen : public Screen
 {
 public:
-    ReactionTestingScreen(Resources* res): Screen(res) {}
+    ReactionTestingScreen(Resources& res): Screen(res) {}
 
-    void prepare(const ScreenParam& arg);
+    void prepare(std::shared_ptr<tgui::Gui> guiObject);
 
     void handleEvent(const sf::Event& windowEvent);
 
@@ -32,7 +36,12 @@ public:
     void enableDrawing();
     void disableDrawing();
 
+protected:
+
+    void parseScreenParam(const ScreenParam::Ptr screenConfigs);
+
 private:
+
     void createBackground();
     void createNodes();
     void createCasesLeftText();
@@ -54,10 +63,6 @@ private:
     TestingNode* selectNodeAt(int index);
 
     void setNodeStatusAtIndex(NodeStatus status, int index);
-
-    void parseArg(const ScreenParam& arg);
-    void parseIntParams(const std::vector<int>& argIntParams);
-    void parseStringParams(const std::vector<std::string>& argStringParams);
 
     sf::VertexArray background;
     sf::Text casesLeft;
