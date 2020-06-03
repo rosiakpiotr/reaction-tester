@@ -19,43 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Animation.cpp" />
-    <ClCompile Include="..\src\AnimationPool.cpp" />
-    <ClCompile Include="..\src\ColorfulLogger.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\ReactionTest.cpp" />
-    <ClCompile Include="..\src\ReactionTestingScreen.cpp" />
-    <ClCompile Include="..\src\Resources.cpp" />
-    <ClCompile Include="..\src\Screen.cpp" />
-    <ClCompile Include="..\src\SetupScreen.cpp" />
-    <ClCompile Include="..\src\TestingNode.cpp" />
-    <ClCompile Include="..\src\TextList.cpp" />
-    <ClCompile Include="..\src\utility.cpp" />
-    <ClCompile Include="..\src\Window.cpp" />
+    <ClInclude Include="include\Animation.h" />
+    <ClInclude Include="include\AnimationPool.h" />
+    <ClInclude Include="include\ColorfulLogger.h" />
+    <ClInclude Include="include\constants.h" />
+    <ClInclude Include="include\FallTowardsScreenAnimation.h" />
+    <ClInclude Include="include\ReactionTest.h" />
+    <ClInclude Include="include\ReactionTestingScreen.h" />
+    <ClInclude Include="include\Resources.h" />
+    <ClInclude Include="include\Screen.h" />
+    <ClInclude Include="include\SetupScreen.h" />
+    <ClInclude Include="include\TestingNode.h" />
+    <ClInclude Include="include\TextList.h" />
+    <ClInclude Include="include\utility.h" />
+    <ClInclude Include="include\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Animation.h" />
-    <ClInclude Include="..\include\AnimationPool.h" />
-    <ClInclude Include="..\include\ColorfulLogger.h" />
-    <ClInclude Include="..\include\constants.h" />
-    <ClInclude Include="..\include\FallTowardsScreenAnimation.h" />
-    <ClInclude Include="..\include\ReactionTest.h" />
-    <ClInclude Include="..\include\ReactionTestingScreen.h" />
-    <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\include\Screen.h" />
-    <ClInclude Include="..\include\SetupScreen.h" />
-    <ClInclude Include="..\include\TestingNode.h" />
-    <ClInclude Include="..\include\TextList.h" />
-    <ClInclude Include="..\include\utility.h" />
-    <ClInclude Include="..\include\Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\res\background.jpg" />
-    <Image Include="..\res\testingNode.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="..\res\basic.ttf" />
-    <Font Include="..\res\testingNodeCaptionFont.ttf" />
+    <ClCompile Include="src\Animation.cpp" />
+    <ClCompile Include="src\AnimationPool.cpp" />
+    <ClCompile Include="src\ColorfulLogger.cpp" />
+    <ClCompile Include="src\FallTowardsScreenAnimation.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ReactionTest.cpp" />
+    <ClCompile Include="src\ReactionTestingScreen.cpp" />
+    <ClCompile Include="src\Resources.cpp" />
+    <ClCompile Include="src\Screen.cpp" />
+    <ClCompile Include="src\SetupScreen.cpp" />
+    <ClCompile Include="src\TestingNode.cpp" />
+    <ClCompile Include="src\TextList.cpp" />
+    <ClCompile Include="src\utility.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
